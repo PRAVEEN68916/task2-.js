@@ -1,0 +1,339 @@
+Flights Component (Flights.jsx)
+import React, { useState } from "react";
+
+const Flights = () => {
+  const [form, setForm] = useState({
+    from: "",
+    to: "",
+    departDate: "",
+    returnDate: "",
+    passengers: 1,
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Searching flights from ${form.from} to ${form.to}`);
+    // Add real flight search logic here
+  };
+
+  return (
+    <section style={{ padding: "2rem", color: "#fff", maxWidth: "600px", margin: "auto" }}>
+      <h1>Search Flights</h1>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <input
+          type="text"
+          name="from"
+          placeholder="From"
+          value={form.from}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="text"
+          name="to"
+          placeholder="To"
+          value={form.to}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="date"
+          name="departDate"
+          value={form.departDate}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="date"
+          name="returnDate"
+          value={form.returnDate}
+          onChange={handleChange}
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="number"
+          name="passengers"
+          min="1"
+          max="10"
+          value={form.passengers}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: "0.75rem",
+            borderRadius: "25px",
+            border: "none",
+            backgroundColor: "#00eaff",
+            color: "#000",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 4px 15px rgba(0, 234, 255, 0.4)",
+          }}
+        >
+          Search
+        </button>
+      </form>
+    </section>
+  );
+};
+
+export default Flights;
+
+3. SignIn Component (SignIn.jsx)
+import React, { useState } from "react";
+
+const SignIn = () => {
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Sign In with email: ${form.email}`);
+    // Add sign-in logic here
+  };
+
+  return (
+    <section style={{ padding: "2rem", color: "#fff", maxWidth: "400px", margin: "auto" }}>
+      <h1>Sign In</h1>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: "0.75rem",
+            borderRadius: "25px",
+            border: "none",
+            backgroundColor: "#00eaff",
+            color: "#000",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 4px 15px rgba(0, 234, 255, 0.4)",
+          }}
+        >
+          Sign In
+        </button>
+      </form>
+      <p style={{ marginTop: "1rem" }}>
+        Forgot Password? <a href="#!" style={{ color: "#00eaff" }}>Reset here</a>
+      </p>
+    </section>
+  );
+};
+
+export default SignIn;
+
+4. Login Component (Login.jsx)
+import React, { useState } from "react";
+
+const Login = () => {
+  const [form, setForm] = useState({ email: "", password: "", remember: false });
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setForm({ ...form, [name]: type === "checkbox" ? checked : value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Logging in as: ${form.email}`);
+    // Add login logic here
+  };
+
+  return (
+    <section style={{ padding: "2rem", color: "#fff", maxWidth: "400px", margin: "auto" }}>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.9rem" }}>
+          <input
+            type="checkbox"
+            name="remember"
+            checked={form.remember}
+            onChange={handleChange}
+          />
+          Remember Me
+        </label>
+        <button
+          type="submit"
+          style={{
+            padding: "0.75rem",
+            borderRadius: "25px",
+            border: "none",
+            backgroundColor: "#00eaff",
+            color: "#000",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 4px 15px rgba(0, 234, 255, 0.4)",
+          }}
+        >
+          Login
+        </button>
+      </form>
+      <p style={{ marginTop: "1rem" }}>
+        Forgot Password? <a href="#!" style={{ color: "#00eaff" }}>Reset here</a>
+      </p>
+    </section>
+  );
+};
+
+export default Login;
+
+5. Contact Component (Contact.jsx)
+import React, { useState } from "react";
+
+const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Message sent! Thanks, ${form.name}`);
+    // Add real submission logic here
+  };
+
+  return (
+    <section style={{ padding: "2rem", color: "#fff", maxWidth: "600px", margin: "auto" }}>
+      <h1>Contact Us</h1>
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Your Name"
+          value={form.name}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          value={form.subject}
+          onChange={handleChange}
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none" }}
+        />
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          value={form.message}
+          onChange={handleChange}
+          rows="5"
+          required
+          style={{ padding: "0.5rem", borderRadius: "5px", border: "none", resize: "vertical" }}
+        />
+        <button
+          type="submit"
+          style={{
+            padding: "0.75rem",
+            borderRadius: "25px",
+            border: "none",
+            backgroundColor: "#00eaff",
+            color: "#000",
+            fontWeight: "bold",
+            cursor: "pointer",
+            boxShadow: "0 4px 15px rgba(0, 234, 255, 0.4)",
+          }}
+        >
+          Send Message
+        </button>
+      </form>
+      <div style={{ marginTop: "2rem" }}>
+        <p>📞 Phone: +1 234 567 890</p>
+        <p>✉️ Email: support@skybook.com</p>
+        <p>🏢 Address: 123 Flight St, SkyCity, Earth</p>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;
+
+How to use
+
+You can use these components and render them conditionally based on navigation, or use React Router for navigation.
+
+Example with React Router:
+
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Flights from "./Flights";
+import SignIn from "./SignIn";
+import Login from "./Login";
+import Contact from "./Contact";
+
+const App = () => {
+  return (
+    <Router>
+      <Navbar />
+      <div style={{ paddingTop: "80px" }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/flights" element={<Flights />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
